@@ -39,6 +39,11 @@ export const DetalheProduto = () => {
     produto && formRef.current?.setData(produto);
   }, [produto]);
 
+  const handleExcluir = useCallback(async () => {
+    await servicoDeProduto.excluir(parseInt(id));
+    navigate('/pagina-inicial');
+  }, []);
+
   const handleSubmit = useCallback(async (data: IFormData) => {
     try {
       formRef.current?.setErrors({});
@@ -86,11 +91,16 @@ export const DetalheProduto = () => {
             <VTextField name='descricao' label='Descricao' />
             <VTextField name='valor' label='Valor' />
 
-            <Box display='flex' justifyContent='end'>
+            <Box display='flex' justifyContent='end' gap={1}>
+              <Button
+                label='Excluir'
+                variant='contained'
+                onClick={handleExcluir}
+              />
+
               <Button
                 label={id === 'novo' ? 'Criar' : 'Salvar'}
                 variant='contained'
-                minWidth={200}
                 type='submit'
               />
             </Box>
