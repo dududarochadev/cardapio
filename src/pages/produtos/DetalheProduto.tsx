@@ -37,6 +37,7 @@ export const DetalheProduto = () => {
 
   useEffect(() => {
     produto && formRef.current?.setData(produto);
+
   }, [produto]);
 
   const handleExcluir = useCallback(async () => {
@@ -73,7 +74,7 @@ export const DetalheProduto = () => {
     <CircularProgress />
   ) : (
     <LayoutBase>
-      {produto &&
+      {
         <Form ref={formRef} onSubmit={handleSubmit} initialData={produto}>
           <Paper
             variant='outlined'
