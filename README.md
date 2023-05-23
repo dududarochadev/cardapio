@@ -1,1 +1,1 @@
-# Aplicação de barbearia
+# Aplicação de cardápio simples
